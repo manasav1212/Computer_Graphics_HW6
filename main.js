@@ -165,6 +165,9 @@ function createMesh({ positions, normals, tangents, texCoords, indices }) {
 
 const cubeMesh = createMesh(createCube());
 const cylinderMesh = createMesh(createCylinder());
+const coneMesh = createMesh(createCone());
+const sphereMesh = createMesh(createSphere());
+const torusMesh = createMesh(createTorus());
 
 function loadTexture(url) {
   const texture = gl.createTexture();
