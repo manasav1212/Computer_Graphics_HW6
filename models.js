@@ -115,7 +115,7 @@ function createSphere(segments=64, rings=32, uRepeat=3) {
 function createCone(segments=64, uRepeat=3, radius=1, height=2) {
   const positions = [], normals = [], tangents = [], texCoords = [], indices = [];
   const yBase = -height/2, yApex = height/2;
-  const inv = 1/Math.Sqrt(height*height + radius*radius);
+  const inv = 1/Math.sqrt(height*height + radius*radius);
 
   // Side
   for (let i = 0; i <= segments; i++) {
@@ -139,7 +139,7 @@ function createCone(segments=64, uRepeat=3, radius=1, height=2) {
   }
 
   // Cap
-  let center = pos.length/3;
+  let center = positions.length/3;
   positions.push(0, yBase, 0);
   normals.push(0, -1, 0);
   tangents.push(1, 0, 0);
@@ -172,7 +172,7 @@ function createTorus(segments=64, tubeSegments=32, Radius=1, radius=0.4, uRepeat
 
   for(let j=0; j<= tubeSegments; j++)
   {
-    let v = j/tubeSegments, phi = * 2 * Math.PI * v;
+    let v = j/tubeSegments, phi = 2 * Math.PI * v;
     let sp = Math.sin(phi);
     let cp = Math.cos(phi);
     for(let i=0; i<=segments; i++)
