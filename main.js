@@ -189,7 +189,7 @@ function loadTexture(url) {
 const brickTexture = loadTexture("brick.png");
 const normalTexture = loadTexture("texture2.jpg");
 const LeatherNormalTexture = loadTexture("LeatherNormal.jpg");
-const LeatherBumpTexture = loadTexture("LeatherBump.jpg");
+const LeatherBumpTexture = loadTexture("Flooring.jpg");
 
 const BUMP_MAPPING = 0, NORMAL_MAPPING = 1;
 const objects = [
