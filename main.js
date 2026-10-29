@@ -188,8 +188,8 @@ function loadTexture(url) {
 
 const brickTexture = loadTexture("brick.png");
 const normalTexture = loadTexture("texture2.jpg");
-const LeatherNormalTexture = loadTexture("LeatherNormal.jpg");
-const stoneTexture = loadTexture("stone.jpg");
+const NormalTexture2 = loadTexture("normal2.jpg");
+const stoneTexture = loadTexture("bump2.jfif");
 
 const BUMP_MAPPING = 0, NORMAL_MAPPING = 1;
 const objects = [
@@ -197,7 +197,7 @@ const objects = [
   { mesh: cylinderMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [2.2, -1.2, 0] },
   { mesh: coneMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [2.25, 1.7, 0] },
   { mesh: sphereMesh, texture: stoneTexture, mapping: BUMP_MAPPING, offset: [-2.5, 1, 0] },
-  { mesh: torusMesh, texture: LeatherNormalTexture, mapping: NORMAL_MAPPING, offset: [2.25, 0.25, 0] }
+  { mesh: torusMesh, texture: NormalTexture2, mapping: NORMAL_MAPPING, offset: [2.25, 0.25, 0] }
 ];
 
 gl.enable(gl.DEPTH_TEST);
