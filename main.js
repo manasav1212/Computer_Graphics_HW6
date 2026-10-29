@@ -189,15 +189,15 @@ function loadTexture(url) {
 const brickTexture = loadTexture("brick.png");
 const normalTexture = loadTexture("texture2.jpg");
 const LeatherNormalTexture = loadTexture("LeatherNormal.jpg");
-const LeatherBumpTexture = loadTexture("Flooring.jpg");
+const stoneTexture = loadTexture("stone.jpg");
 
 const BUMP_MAPPING = 0, NORMAL_MAPPING = 1;
 const objects = [
-  { mesh: cubeMesh, texture: brickTexture, mapping: BUMP_MAPPING, offset: [-2.2, 1.2, 0] },
-  { mesh: cylinderMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [2.2, 1.2, 0] },
-  { mesh: coneMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [-2.5, -1, 0] },
-  { mesh: sphereMesh, texture: LeatherBumpTexture, mapping: BUMP_MAPPING, offset: [2.5, -1, 0] },
-  { mesh: torusMesh, texture: LeatherNormalTexture, mapping: NORMAL_MAPPING, offset: [0, -1.5, 0] }
+  { mesh: cubeMesh, texture: brickTexture, mapping: BUMP_MAPPING, offset: [-2.5, -1, 0] },
+  { mesh: cylinderMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [2.2, -1.2, 0] },
+  { mesh: coneMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [2.25, 1.7, 0] },
+  { mesh: sphereMesh, texture: stoneTexture, mapping: BUMP_MAPPING, offset: [-2.5, 1, 0] },
+  { mesh: torusMesh, texture: LeatherNormalTexture, mapping: NORMAL_MAPPING, offset: [2.25, 0.25, 0] }
 ];
 
 gl.enable(gl.DEPTH_TEST);
