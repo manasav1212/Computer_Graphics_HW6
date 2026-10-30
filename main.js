@@ -219,7 +219,7 @@ const brickTexture = loadTexture("brick.png");
 const normalTexture = loadTexture("texture2.jpg");
 const NormalTexture2 = loadTexture("normal2.jpg");
 const stoneTexture = loadTexture("bump2.jfif");
-const videoTexture = loadVideoTexture("https://www.pexels.com/download/video/39631233/");
+const videoTexture = loadVideoTexture("video.mp4");
 
 const BUMP_MAPPING = 0, NORMAL_MAPPING = 1;
 const objects = [
