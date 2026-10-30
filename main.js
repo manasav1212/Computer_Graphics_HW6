@@ -186,15 +186,45 @@ function loadTexture(url) {
   return texture;
 }
 
+function loadVideoTexture(url)
+{
+  const texture = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, texture);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 255]));
+
+  const video = document.createElement("video");
+  video.src = url;
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+
+  video.addEventListener("loadeddata", ()=>{
+    video.play();
+  });
+
+  return {texture, video};
+}
+
+function updateVideoTexture(texture, video)
+{
+  if(video.readyState >= video.HAVE_CURRENT_DATA)
+  {
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);  // images start at the top row, texture coordinates at the bottom
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, video);
+  }
+}
+
 const brickTexture = loadTexture("brick.png");
 const normalTexture = loadTexture("texture2.jpg");
 const NormalTexture2 = loadTexture("normal2.jpg");
 const stoneTexture = loadTexture("bump2.jfif");
+const videoTexture = loadVideoTexture("video.mp4");
 
 const BUMP_MAPPING = 0, NORMAL_MAPPING = 1;
 const objects = [
   { mesh: cubeMesh, texture: brickTexture, mapping: BUMP_MAPPING, offset: [-2.5, -1, 0] },
-  { mesh: cylinderMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [2.2, -1.2, 0] },
+  { mesh: cylinderMesh, texture: videoTexture.texture, mapping: NORMAL_MAPPING, offset: [2.2, -1.2, 0] },
   { mesh: coneMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [2.25, 1.7, 0] },
   { mesh: sphereMesh, texture: stoneTexture, mapping: BUMP_MAPPING, offset: [-2.5, 1, 0] },
   { mesh: torusMesh, texture: NormalTexture2, mapping: NORMAL_MAPPING, offset: [2.25, 0.25, 0] }
@@ -246,6 +276,7 @@ document.getElementById("spinButton").addEventListener("click", () => spinning =
 // Render loop
 let lastTime = 0;
 function render(time) {
+  updateVideoTexture(videoTexture.texture, videoTexture.video);
   const t = time / 1000;
   if (spinning) spinAngle += t - lastTime;
   lastTime = t;
