@@ -60,6 +60,11 @@ void main() {
   vec3 baseColor;
   vec3 n;
 
+  vec3 Ka;
+  vec3 Kd;
+  vec3 Ks;
+  float shininess;
+
   if (uMapping == 0) {
     // Bump mapping: tilt the normal against the gradient of the height field
     vec2 du = vec2(1.0 / float(textureSize(uTexture, 0).x), 0.0);
@@ -68,16 +73,26 @@ void main() {
     float dhdv = (height(vTexCoord + dv) - height(vTexCoord - dv)) * 0.5;
     n = normalize(vec3(-bumpScale * dhdu, -bumpScale * dhdv, 1.0));
     baseColor = texture(uTexture, vTexCoord).rgb;
-  } else {
+    Ka = 0.2 * baseColor;
+    Kd = 0.8 * baseColor;
+    Ks = vec3(0.5);
+    shininess = 32.0;
+  } else if (uMapping == 1) {
     // Normal mapping: the texture stores the tangent-space normal in [0, 1]
     n = normalize(texture(uTexture, vTexCoord).rgb * 2.0 - 1.0);
     baseColor = vec3(0.85, 0.65, 0.3);
+    Ka = 0.2 * baseColor;
+    Kd = 0.8 * baseColor;
+    Ks = vec3(0.5);
+    shininess = 32.0;
+  }else{
+    n = vec3(0.0, 0.0, 1.0);
+    baseColor = texture(uTexture, vTexCoord).rgb;
+    Ka = 0.45 * baseColor;
+    Kd = 0.95 * baseColor;
+    Ks = vec3(0.1);
+    shininess = 32.0;
   }
-
-  vec3 Ka = 0.2 * baseColor;
-  vec3 Kd = 0.8 * baseColor;
-  vec3 Ks = vec3(0.5);
-  float shininess = 32.0;
 
   N = normalize(TBN * n);
   vec3 L = normalize(uLightPos - vPosition);
@@ -226,10 +241,10 @@ const NormalTexture2 = loadTexture("normal2.jpg");
 const stoneTexture = loadTexture("bump2.jfif");
 const videoTexture = loadVideoTexture("video2.mp4");
 
-const BUMP_MAPPING = 0, NORMAL_MAPPING = 1;
+const BUMP_MAPPING = 0, NORMAL_MAPPING = 1, TEXTURE_MAPPING = 2;
 const objects = [
   { mesh: cubeMesh, texture: brickTexture, mapping: BUMP_MAPPING, offset: [-2.5, -1, 0] },
-  { mesh: cylinderMesh, texture: videoTexture.texture, mapping: NORMAL_MAPPING, offset: [2.2, -1.2, 0] },
+  { mesh: cylinderMesh, texture: videoTexture.texture, mapping: TEXTURE_MAPPING, offset: [2.2, -1.2, 0] },
   { mesh: coneMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [2.25, 1.7, 0] },
   { mesh: sphereMesh, texture: stoneTexture, mapping: BUMP_MAPPING, offset: [-2.5, 1, 0] },
   { mesh: torusMesh, texture: NormalTexture2, mapping: NORMAL_MAPPING, offset: [2.25, 0.25, 0] }
