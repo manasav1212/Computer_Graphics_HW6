@@ -239,7 +239,7 @@ const brickTexture = loadTexture("brick.png");
 const normalTexture = loadTexture("texture2.jpg");
 const NormalTexture2 = loadTexture("normal2.jpg");
 const stoneTexture = loadTexture("stone.jpg");
-const bumpTexture = loadTexture("piano.jfif");
+const bumpTexture = loadTexture("pebble.jpeg");
 const videoTexture = loadVideoTexture("video.mp4");
 const NormalTexture3 = loadTexture("normal3.jpg");
 
@@ -248,7 +248,7 @@ const objects = [
   { mesh: cubeMesh, texture: brickTexture, mapping: BUMP_MAPPING, offset: [-2.75, -1, 0] },
   { mesh: cylinderMesh, texture: videoTexture.texture, mapping: TEXTURE_MAPPING, offset: [2.5, -1.2, 0] },
   { mesh: coneMesh, texture: stoneTexture, mapping: BUMP_MAPPING, offset: [-2.8, 1.02, 0] },
-  { mesh: sphereMesh, texture: brickTexture, mapping: BUMP_MAPPING, offset: [-0.5, 0.8, 0] },
+  { mesh: sphereMesh, texture: bumpTexture, mapping: BUMP_MAPPING, offset: [-0.5, 0.8, 0] },
   { mesh: torusMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [0.25, -0.4, 0] },
   { mesh: torusMesh, texture: NormalTexture2, mapping: NORMAL_MAPPING, offset: [0.7, -1.25, 0] }
 ];
