@@ -246,7 +246,7 @@ const NormalTexture3 = loadTexture("normal3.jpg");
 const BUMP_MAPPING = 0, NORMAL_MAPPING = 1, TEXTURE_MAPPING = 2;
 const objects = [
   { mesh: cubeMesh, texture: brickTexture, mapping: BUMP_MAPPING, offset: [-2.75, -1, 0] },
-  { mesh: cylinderMesh, texture: videoTexture.texture, mapping: TEXTURE_MAPPING, offset: [2.8, -1.2, 0] },
+  { mesh: cylinderMesh, texture: videoTexture.texture, mapping: TEXTURE_MAPPING, offset: [2.8, 1.0, 0] },
   { mesh: coneMesh, texture: stoneTexture, mapping: BUMP_MAPPING, offset: [-2.8, 1.02, 0] },
   { mesh: sphereMesh, texture: bumpTexture, mapping: BUMP_MAPPING, offset: [-0.5, 0.8, 0] },
   { mesh: torusMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [0.25, -0.4, 0] },
