@@ -80,7 +80,7 @@ void main() {
   } else if (uMapping == 1) {
     // Normal mapping: the texture stores the tangent-space normal in [0, 1]
     n = normalize(texture(uTexture, vTexCoord).rgb * 2.0 - 1.0);
-    baseColor = vec3(0.85, 0.65, 0.3);
+    baseColor = vec3(0.45, 0.45, 0.45); //vec3(0.85, 0.65, 0.3);
     Ka = 0.2 * baseColor;
     Kd = 0.8 * baseColor;
     Ks = vec3(0.5);
@@ -239,15 +239,17 @@ const brickTexture = loadTexture("brick.png");
 const normalTexture = loadTexture("texture2.jpg");
 const NormalTexture2 = loadTexture("normal2.jpg");
 const stoneTexture = loadTexture("bump2.jfif");
-const videoTexture = loadVideoTexture("video2.mp4");
+const videoTexture = loadVideoTexture("video.mp4");
+const NormalTexture3 = loadTexture("normal3.jpg");
 
 const BUMP_MAPPING = 0, NORMAL_MAPPING = 1, TEXTURE_MAPPING = 2;
 const objects = [
-  { mesh: cubeMesh, texture: brickTexture, mapping: BUMP_MAPPING, offset: [-2.5, -1, 0] },
-  { mesh: cylinderMesh, texture: videoTexture.texture, mapping: TEXTURE_MAPPING, offset: [2.2, -1.2, 0] },
-  { mesh: coneMesh, texture: normalTexture, mapping: NORMAL_MAPPING, offset: [2.25, 1.7, 0] },
-  { mesh: sphereMesh, texture: stoneTexture, mapping: BUMP_MAPPING, offset: [-2.5, 1, 0] },
-  { mesh: torusMesh, texture: NormalTexture2, mapping: NORMAL_MAPPING, offset: [2.25, 0.25, 0] }
+  { mesh: cubeMesh, texture: brickTexture, mapping: BUMP_MAPPING, offset: [-2.75, -1, 0] },
+  { mesh: cylinderMesh, texture: videoTexture.texture, mapping: TEXTURE_MAPPING, offset: [2.5, -1.2, 0] },
+  { mesh: coneMesh, texture: stoneTexture, mapping: BUMP_MAPPING, offset: [-2.8, 1.02, 0] },
+  { mesh: sphereMesh, texture: NormalTexture3, mapping: NORMAL_MAPPING, offset: [-0.5, 0.8, 0] },
+  { mesh: torusMesh, texture: NormalTexture2, mapping: NORMAL_MAPPING, offset: [0.25, -0.4, 0] },
+  { mesh: torusMesh, texture: NormalTexture2, mapping: NORMAL_MAPPING, offset: [0.7, -1.25, 0] }
 ];
 
 gl.enable(gl.DEPTH_TEST);

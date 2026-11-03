@@ -112,7 +112,7 @@ function createSphere(segments=64, rings=32, uRepeat=3) {
   };
 }
 
-function createCone(segments=64, uRepeat=3, radius=1, height=2) {
+function createCone(segments=64, uRepeat=3, radius=1.414, height=2) {
   const positions = [], normals = [], tangents = [], texCoords = [], indices = [];
   const yBase = -height/2, yApex = height/2;
   const inv = 1/Math.sqrt(height*height + radius*radius);
