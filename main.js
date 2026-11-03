@@ -239,7 +239,7 @@ const brickTexture = loadTexture("brick.png");
 const normalTexture = loadTexture("texture2.jpg");
 const NormalTexture2 = loadTexture("normal2.jpg");
 const stoneTexture = loadTexture("stone.jpg");
-const bumpTexture = loadTexture("pebble.jpeg");
+const bumpTexture = loadTexture("piano.jfif");
 const videoTexture = loadVideoTexture("video.mp4");
 const NormalTexture3 = loadTexture("normal3.jpg");
 
