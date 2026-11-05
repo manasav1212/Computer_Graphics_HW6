@@ -28,7 +28,7 @@ function createCube() {
 }
 
 
-function createCylinder(segments = 64, uRepeat = 3) {
+function createCylinder(segments = 64, uRepeat = 1) {
   const positions = [], normals = [], tangents = [], texCoords = [], indices = [];
 
   // Side: theta grows with u, so T points along the circle and B = cross(N, T) points up
