@@ -87,7 +87,7 @@ void main() {
     shininess = 32.0;
   }else{
     n = vec3(0.0, 0.0, 1.0);
-    baseColor = texture(uTexture, vTexCoord).rgb;
+    baseColor = texture(uTexture, vTexCoord + vec2(0.5, 0.0)).rgb;
     Ka = 0.45 * baseColor;
     Kd = 0.95 * baseColor;
     Ks = vec3(0.1);
